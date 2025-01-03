@@ -1,6 +1,5 @@
-.*
 !.gitignore
-*.conf
-*.host
+.*
+.DS_Store 
 media/*
 __pycache__
