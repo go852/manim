@@ -1,0 +1,6 @@
+.*
+!.gitignore
+*.conf
+*.host
+media/*
+__pycache__
