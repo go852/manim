@@ -29,8 +29,7 @@ class SquareSample(Scene):
         self.play(Create(square_1), Create(square_2), Create(square_3))
         self.wait(2)
 
-        vs = square_3.get_vertices()
-        print(*vs)
-        for v in vs:
-            print(*v)
+        verterxes = square_1.get_vertices()
+        dots = [Dot(v, color=ORANGE) for v in verterxes]
+        self.play(Create(VGroup(*dots)))
         self.wait()
