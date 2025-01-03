@@ -1,7 +1,10 @@
 from manim import *
 
-class SquareAndCirclesWithColoredPoints(Scene):
+class SquareAndCirclesWithDashedDiagonal(Scene):
     def construct(self):
+        # 设置背景颜色为 "#2F7F5F"
+        self.camera.background_color = "#2F7F5F"
+
         # 创建一个边长为4的绿色正方形
         square = Square(side_length=4, color=GREEN)
 
@@ -29,12 +32,17 @@ class SquareAndCirclesWithColoredPoints(Scene):
         ]
         midpoint_dots = [Dot(point=midpoint, color=ORANGE) for midpoint in midpoints]
 
-        # 动画：先绘制正方形，再绘制外接圆、内切圆和点
+        # 使用 DashedLine 画出正方形的黄色对角线
+        diagonal_line_1 = DashedLine(square.get_vertices()[0], square.get_vertices()[2], color=YELLOW)
+        diagonal_line_2 = DashedLine(square.get_vertices()[1], square.get_vertices()[3], color=YELLOW)
+
+        # 动画：先绘制正方形，再绘制外接圆、内切圆、点和对角线
         self.play(Create(square))
         self.play(Create(circumscribed_circle))
         self.play(Create(inscribed_circle))
         self.play(*[Create(dot) for dot in vertex_dots])  # 绘制顶点上的点
         self.play(*[Create(dot) for dot in midpoint_dots])  # 绘制边的中点上的点
+        self.play(Create(diagonal_line_1), Create(diagonal_line_2))  # 绘制黄色对角线
 
         # 等待3秒钟，方便查看结果
         self.wait(3)
