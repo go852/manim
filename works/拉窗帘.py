@@ -62,3 +62,7 @@ class CurtainSample(Scene):
         self.play(Write(e2.next_to(e1, DOWN)), run_time=3)
         self.play(Write(e3.next_to(e2, DOWN)), run_time=3)
         self.wait(3)
+
+if __name__ == "__main__":
+    from os import system
+    system("manim -pqk {}".format(__file__))
