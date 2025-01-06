@@ -28,7 +28,7 @@ class LineSample(CoverScene):
         for dot in dots:
             self.add(dot)
         self.wait(0.5)
-        self.save_frame(self.cover_filename) # 保留当前帧为cover.png
+        self.save_cover(self.cover_filename) # 保留当前帧为cover.png
         self.play(AddTextLetterByLetter(t2.next_to([0, -2, 0], DOWN), runtime=0.1))
         self.wait(5)
 
