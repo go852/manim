@@ -1,11 +1,9 @@
 from manim import *
+from coverscene import CoverScene
 
-config.background_color = "#2F7F5F" # 设置背景颜色
-
-class LineSample(Scene):
+class LineSample(CoverScene):
     def construct(self):
-        # 设置背景颜色
-        # self.camera.background_color = BLUE_E
+        self.add_cover()
         t1 = Text("如何用一笔画4条直线段连接以下9个点", color=WHITE, font_size=36, font='Songti SC')
         dots = []
         i = 1
@@ -24,14 +22,16 @@ class LineSample(Scene):
         l33 = Line([-1, -2, 0], [-1, 1, 0], color=ORANGE, z_index=0)
         l34 = Line([-1, 1, 0], [1, -1, 0], color=ORANGE, z_index=0)
 
-        self.play(AddTextLetterByLetter(t1.next_to([0, 2, 0], UP)), runtime=0.1)
+        self.play(AddTextLetterByLetter(t1.next_to([0, 2, 0], UP)), runtime=10)
         # print(Text("").font_list()) # 获得可用字体列表
         # 绘制 9个点
         for dot in dots:
             self.add(dot)
-
+        self.wait(0.5)
+        self.save_frame(self.cover_filename) # 保留当前帧为cover.png
         self.play(AddTextLetterByLetter(t2.next_to([0, -2, 0], DOWN), runtime=0.1))
         self.wait(5)
+
         for i in [8, 7, 6, 3, 0]:
             self.remove(dots[i])
         self.remove(t1)
@@ -61,3 +61,4 @@ class LineSample(Scene):
         self.play(Create(l32), run_time=2, z_index=0)
         self.play(Create(l33), run_time=2, z_index=0)
         self.play(Create(l34), run_time=2, z_index=0)
+        self.wait(2)
