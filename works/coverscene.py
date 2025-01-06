@@ -3,6 +3,13 @@ config.background_color = "#2F7F5F" # 设置背景颜色
 
 class CoverScene(Scene):
     cover_filename = "cover.png"
+    def construct(self):
+        self.add_cover()
+        self.wait(2)
+    
+    def font_list(self):
+        print(Text.font_list())
+
     def save_frame(self, filename):
         # 获取当前帧并保存为图片
         frame = self.camera.get_image()
@@ -13,6 +20,7 @@ class CoverScene(Scene):
         self.camera.background_color = "#2F7F5F"
         import os
         if not os.path.isfile(self.cover_filename):
+            self.add_logo()
             return
         # 加载 PNG 文件
         cover = ImageMobject(self.cover_filename)
@@ -27,6 +35,8 @@ class CoverScene(Scene):
         self.remove(cover)
 
     def add_logo(self):
-        logo = Text("@数理编程", font_size=36)
-        logo.align_to(UR)
+        # self.font_list()
+        logo = Text("@数理编程", font_size=36, font='Xingkai SC', weight="BOLD")
+        logo.to_edge(UP)
+        logo.to_edge(RIGHT)
         self.add(logo)
