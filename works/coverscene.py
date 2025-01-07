@@ -1,4 +1,5 @@
 from manim import *
+import os
 config.background_color = "#2F7F5F" # 设置背景颜色
 
 class CoverScene(Scene):
@@ -13,15 +14,15 @@ class CoverScene(Scene):
 
     def save_cover(self, filename):
         self.remove(self.logo)
+        self.wait(0.001)
         # 获取当前帧并保存为图片
         frame = self.camera.get_image()
         frame.save(filename)
-        self.add(self.logo)
+        self.bring_to_front(self.logo)
 
     def add_cover(self):
-        # 设置背景颜色
-        self.camera.background_color = "#2F7F5F"
-        import os
+        # # 设置背景颜色
+        # self.camera.background_color = "#2F7F5F"
         if not os.path.isfile(self.cover_filename):
             self.add_logo()
             return
