@@ -2,4 +2,4 @@
 !.gitignore
 media/*
 __pycache__
-cover.png
+works/cover.png
